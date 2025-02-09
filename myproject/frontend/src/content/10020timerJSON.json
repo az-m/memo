@@ -1,0 +1,18 @@
+{
+  "task": [
+    {
+      "id": "WW102T",
+      "title": "",
+      "intro": "<p>You&#39;re probably familiar with the eye strain that comes from working with a screen all day. The 20-20-20 technique uses microbreaks to make work easier on your eyes, as well as releasing tension from your face, neck and shoulders.</p><p>Every 20 minutes, look away from the screen and stare at an object 20 feet away for 20 seconds. (20 feet is 6 metres.)</p>",
+      "CTA": "Click the timer to start timing 20 seconds now.",
+      "duration": 20
+    },
+    {
+      "id": "TF102T",
+      "title": "Try mindfulness",
+      "intro": "<p>Mindfulness can be an effective way to calm your body and mind. Too busy? Think again. It&#39;s easy to build into your working day. Try this exercise right now.</p><p>Take a few minutes to focus on your breathing. Read these instructions, then start the timer. Focus on your breathing until the timer reminds you to stop (2 minutes).</p><ol><li>As you inhale and exhale, pay attention to your breath and how your chest or stomach rises and falls.</li><li>As thoughts come and go, notice them, but keep focusing on your breathing and the sensation of breathing.</li><li>Keep going until the timer tells you to stop.</li></ol><p>Repeat at any point during the day if you feel stressed or overwhelmed.</p>",
+      "CTA": "",
+      "duration": 120
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "task": [
+    {"id": "WW101T", "heading": "Tame your Inbox", "content": "<p>It&#39;s too easy for relentless email to dominate your working day. You end up feeling like you&#39;re constantly reacting to other people&#39;s needs and that can prevent you prioritising your own. Try applying the 4Ds to get your email inbox under control.</p><p>Look at your Inbox and decide which emails you need to DO (if they just need a quick response), which ones you can DELEGATE, and which ones you can DELETE. Most of us can quickly halve our inboxes by dumping all the junk. The final emails may need more of your time, so DEFER these until you are able to give them your full attention.</p><p>A manageable Inbox helps you feel more in control and reduces anxiety and stress.</p><p><strong>Hit Done when you&#39;re finished to collect your points.</strong></p>"},
+    {"id": "TF101T", "heading": "This is the content for Task TF101T", "content": "Some generic task for IFT."},
+    {"id": "BH101T", "heading": "This is the content for Task BH101T", "content": "Some generic task for IFT."},
+    {"id": "JY101T", "heading": "This is the content for Task JY101T", "content": "Some generic task for IFT."},
+    {"id": "RC102T", "heading": "This is the content for Task RC102T", "content": "Some generic task for IFT."},
+    {"id": "JY102T", "heading": "This is the content for Task JY102T", "content": "Some generic task for IFT."},
+    {"id": "TF103T", "heading": "This is the content for Task TF103T", "content": "Some generic task for IFT."},
+    {"id": "RC103T", "heading": "This is the content for Task RC103T", "content": "Some generic task for IFT."},
+    {"id": "TF104T", "heading": "This is the content for Task TF104T", "content": "Some generic task for IFT."},
+    {"id": "BH104T", "heading": "This is the content for Task BH104T", "content": "Some generic task for IFT."},
+    {"id": "JY104T", "heading": "This is the content for Task JY104T", "content": "Some generic task for IFT."},
+    {"id": "WW105T", "heading": "This is the content for Task WW105T", "content": "Some generic task for IFT."},
+    {"id": "BH105T", "heading": "This is the content for Task BH105T", "content": "Some generic task for IFT."},
+    {"id": "JY105T", "heading": "This is the content for Task JY105T", "content": "Some generic task for IFT."},
+    {"id": "WW106T", "heading": "This is the content for Task WW106T", "content": "Some generic task for IFT."},
+    {"id": "TF106T", "heading": "This is the content for Task TF106T", "content": "Some generic task for IFT."},
+    {"id": "RC106T", "heading": "This is the content for Task RC106T", "content": "Some generic task for IFT."},
+    {"id": "JY106T", "heading": "This is the content for Task JY106T", "content": "Some generic task for IFT."}
+  ]
+}

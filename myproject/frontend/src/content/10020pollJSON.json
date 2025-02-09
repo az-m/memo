@@ -1,0 +1,123 @@
+{
+  "poll": [
+    { "id" : "TF101T",
+      "title": "Check your stress levels",
+      "intro": "<p>Spotting the signs of stress is the first step to tackling the causes.</p><p>Think about the past week. Which of these feelings have you experienced?</p>",
+      "question" : [
+        { "no": 1, "text": "Feeling angry or impatient, often for little or no reason",
+          "answer": [
+            { "pos": 0, "text": "Yes", "points": 1 },
+            { "pos": 1, "text": "No", "points": 0 }
+          ]
+        },
+        { "no": 2, "text": "Racing thoughts and an inability to switch off",
+          "answer": [
+            { "pos": 0, "text": "Yes", "points": 1 },
+            { "pos": 1, "text": "No", "points": 0 }
+          ]
+        },
+        { "no": 3, "text": "Being unable to enjoy yourself or have a laugh",
+          "answer": [
+            { "pos": 0, "text": "Yes", "points": 1 },
+            { "pos": 1, "text": "No", "points": 0 }
+          ]
+        },
+         { "no": 4, "text": "Dreading events or meetings",
+          "answer": [
+            { "pos": 0, "text": "Yes", "points": 1 },
+            { "pos": 1, "text": "No", "points": 0 }
+          ]
+        },
+         { "no": 5, "text": "Feeling like you can't cope",
+          "answer": [
+            { "pos": 0, "text": "Yes", "points": 1 },
+            { "pos": 1, "text": "No", "points": 0 }
+          ]
+        }
+      ],
+      "response": [
+        { "threshold": { "lower": 0, "upper": 20 },
+          "message": "<p>Your answers suggest you&#39;re coping well with the levels of stress in your life. But even the most zen-like people can find stress creeping up on them. Stay vigilant and if you feel things bubbling up, talk with a friend, your partner or a co-worker. It will help you to think more clearly about what&#39;s causing the stress. And that&#39;s the key to tackling it.</p><p>Need more help? Checkout our support and advice guide.</p>"
+        },
+        { "threshold": { "lower": 20, "upper": 101 },
+          "message": "<p>Your answers suggest that you may be suffering from stress.</p><p>Don&#39;t bottle it up. Talk with a friend, your partner or a co-worker. Set a time to do it. It will help you to think more clearly about what&#39;s causing the stress. And that&#39;s the key to tackling it.</p><p>Need more help? Checkout our support and advice guide.</p>"
+        }
+      ],
+      "showscore": false
+    },
+    { "id" : "JY103T",
+      "question" : [
+        { "no": 1, "text": "How much does DT JY103T question 1?",
+          "answer": [
+            { "pos": 0, "text": "Answer 1. 2 points.", "points": 2 },
+            { "pos": 1, "text": "Answer 2. 0 points.", "points": 0 },
+            { "pos": 2, "text": "Answer 3. 1 points.", "points": 1 }
+          ]
+        },
+        { "no": 2, "text": "Do you question 2?",
+          "answer": [
+            { "pos": 0, "text": "Answer 1. 1 points.", "points": 1 },
+            { "pos": 1, "text": "Answer 2. 2 points.", "points": 2 },
+            { "pos": 2, "text": "Answer 3. 0 points.", "points": 0 }
+          ]
+        },
+        { "no": 3, "text": "Is this question 3?",
+          "answer": [
+            { "pos": 0, "text": "Answer 1. 0 points.", "points": 0 },
+            { "pos": 1, "text": "Answer 2. 2 points.", "points": 2 },
+            { "pos": 2, "text": "Answer 3. 1 points.", "points": 1 }
+          ]
+        }
+      ],
+      "response": [
+        { "threshold": { "lower": 0, "upper": 25 },
+          "message": "<p>Ah, this is poor</p>"
+        },
+        { "threshold": { "lower": 25, "upper": 50 },
+          "message": "<p>Fair to middling</p>"
+        },
+        { "threshold": { "lower": 50, "upper": 101 },
+          "message": "<p>Great stuff</p>"
+        }
+      ],
+      "showscore": true
+    },
+    { "id" : "TF105T",
+      "question" : [
+        { "no": 1, "text": "When do you TF105T question 1 for DT?",
+          "answer": [
+            { "pos": 0, "text": "Answer 1. 1 points.", "points": 1 },
+            { "pos": 1, "text": "Answer 2. 0 points.", "points": 0 },
+            { "pos": 2, "text": "Answer 3. 2 points.", "points": 2 }
+          ]
+        },
+        { "no": 2, "text": "Why is question 2?",
+          "answer": [
+            { "pos": 0, "text": "Answer 1. 1 points.", "points": 1 },
+            { "pos": 1, "text": "Answer 2. 2 points.", "points": 2 },
+            { "pos": 2, "text": "Answer 3. 0 points.", "points": 0 }
+          ]
+        },
+        { "no": 3, "text": "What about question 3?",
+          "answer": [
+            { "pos": 0, "text": "Answer 1. 0 points.", "points": 0 },
+            { "pos": 1, "text": "Answer 2. 1 points.", "points": 1 },
+            { "pos": 2, "text": "Answer 3. 2 points.", "points": 2 }
+          ]
+        }
+      ],
+      "response": [
+        { "threshold": { "lower": 0, "upper": 25 },
+          "message": "<p>Ah, this is poor</p>"
+        },
+        { "threshold": { "lower": 25, "upper": 50 },
+          "message": "<p>Fair to middling</p>"
+        },
+        { "threshold": { "lower": 50, "upper": 101 },
+          "message": "<p>Great stuff</p>"
+        }
+      ],
+      "showscore": true
+    }
+  ]
+}

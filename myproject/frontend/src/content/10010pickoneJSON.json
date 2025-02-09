@@ -1,0 +1,15 @@
+{
+  "task": [
+    {
+      "id": "RC101T",
+      "heading": "It's good to give",
+      "intro": "<p>Kind gestures don’t need to be big, to make a difference.</p><p>Choose an act of kindness from the list below and make a commitment to yourself to do it today:</p>",
+      "options": [
+        { "opt": 0, "text": "Ask one of your colleagues about their weekend today and really listen to their response." },
+        { "opt": 1, "text": "Call a relative or a friend who needs support." },
+        { "opt": 2, "text": "Say thank you to someone."}
+      ],
+      "CTA": "Hit Done when you're finished to collect your points."
+    }
+  ]
+}

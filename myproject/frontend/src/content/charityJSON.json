@@ -1,0 +1,6 @@
+{
+  "charity": [
+    {"id": "wateraid", "name":  "WaterAid", "url": "https://www.wateraid.org/", "text": "The UK's dedicated water charity. Donate to help bring clean water to those who need it most."},
+    {"id": "nattrust", "name":  "National Trust", "url": "https://www.nationaltrust.org.uk/", "text":  "Looking after Places of Historic Interest or Natural Beauty permanently for the benefit of the nation across England, Wales and Northern Ireland"}
+  ]
+}

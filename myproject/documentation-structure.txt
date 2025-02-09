@@ -1,0 +1,225 @@
+APP
+Selects between showing the Login page or the main app view depending on loggedIn state (held in Vuex store)
+Contains 2 components:
+
+    LOGIN PAGE
+    Accepts user name entered and gets details from the API for the user. Commits the API responses to the Vuex store.
+    Populates: userDetails, companyDetails, taskList in the store. Changes loggedIn to true.
+
+    THE MAIN WRAPPER
+    Holds the principal views of the app and appoints them to 'current view' depending on input from user.
+    Passes the selected task to the Task Handler, the selected category to the List All view.
+
+    Displays the user name at the top of the page for all except the Profile view. When clicked, changes the active
+    view to the Profile view.
+
+    Contains the following components:
+
+        THE FRONT VIEW
+        This is the 'home screen' of the app, and displays the current week's articles, followed by a random selection
+        of articles from other weeks grouped under their category.
+
+        On creation loads in the relevant articlewidgetJSON for the user's company. Filters the json for the current
+        week's content and passes this in an array to This Week's Tasks.
+
+        For each category, filters the json to exclude the current week and select from the remainder according to the
+        category to pass to an Article Panel.
+
+        Defines the number of categories and their names. Shows an Article Panel for each category.
+
+        Contains:
+
+            THIS WEEKS TASKS
+            Receives the content array for the current week's articles and displays them as card group. Changes the border
+            color to indicate completion of related task.
+
+            When an article card is clicked, sets that article as 'currentArticle' in store. Emits event back up to
+            The Main Wrapper, which changes the active view to the Article view.
+
+            ARTICLE PANEL
+            Receives a category name and the associated content array. Shuffles this array, and displays a specified
+            number of items from the beginning of the shuffled array (currently set to 4). Indicates articles with a
+            completed task with a green tick, and with a partially completed task (e.g. quiz) with a yellow tick.
+
+            When an article card is clicked, sets that article as 'currentArticle' in store. Emits event back up to
+            The Main Wrapper, which changes the active view to the Article view.
+
+            When the category name is clicked, emits event up to The Main Wrapper, which changes the active view to
+            the List All view.
+
+
+        THE LIST ALL VIEW
+        A secondary view that displays all the articles and tasks in a specified category. Receives the category name
+        from The Main Wrapper. On creation, loads the company relevant articlewidgetJSON and textwidgetJSON and filters them
+        to select the content for the category.
+
+        Displays the articles and tasks in separate tabs as card lists. Indicates articles with a completed task with
+        a green tick, and with a partially completed task (e.g. quiz) with a yellow tick.
+
+        When an article card is clicked, sets that article as 'currentArticle' in store. Emits event back up to
+        The Main Wrapper, which changes the active view to the Article view.
+
+        When a task card is clicked, emits an event along with the task id to The Main Wrapper, which changes the
+        active view to the Task Handler.
+
+        The Home button at the bottom of the page emits an event up to The Main Wrapper which changes the active view
+        to the Front view.
+
+
+        THE ARTICLE VIEW
+        On creation loads the company articleJSON and pulls out the content for the 'currentArticle' (value held in
+        the Vuex store). Displays the content.
+
+        If the associated task has not been completed, displays a 'Task' button. When clicked, this emits an event with
+        the related task id up to The Main Wrapper, which changes the active view to the Task Handler.
+
+        The Cancel button at the bottom of the page emits an event up to The Main Wrapper which changes the active view
+        to the Front view.
+
+
+        THE TASK HANDLER
+        This component holds the dedicated handlers for the different task types, and handles the outcome of the user's
+        interactions with the task.
+
+        It receives the 'taskID' from The Main Wrapper. On creation it loads the company taskwidgetJSON and finds the
+        relevant entry for the taskID. Depending on the task type held in the json data, it selects which handler child
+        component to display. To this child component it passes the taskID as the currentTask.
+
+        Also on creation, gets the index of the task in the taskList held in the Vuex store. This is the list of tasks
+        that have been partially or entirely completed by the user and is retrieved at login from the API. If the current
+        task does not appear in this list, the index returned will be -1.
+
+        Task processing (onSubmit):
+
+            Quiz Tasks
+            On return from the Quiz Handler, checks to see if the task has been added to the taskList by the Quiz Handler
+            by getting its index. If the task has not been added (i.e. index is still -1) then nothing has been
+            done with regard to the quiz task (e.g. the user cancelled out before completion) and no more quiz specific
+            processing is required.
+
+            If the task does now exist in the store's taskList, checks if the task is fully complete. If it is, updates
+            the taskList item to flag it as complete and clears out any record of partial completion. Otherwise
+            sets the boolean redoBool to true, enabling the 'Redo Quiz' button when passed to the Congrats component.
+
+            It then determines if the task item in the taskList has an 'id' element. This is the unique key generated by
+            the database when a new record is created in the 'tasks' table. If this element exists, it means the task
+            item should exist in the database, and a patch request is sent to the API to update the completion and
+            progress status of the task.
+
+            Otherwise a post request is sent to the API, to add a new record for the task, containing the data from the
+            related item in the store's taskList. The unique id returned from the API is then added to the taskList
+            item, so the store list remains in sync with the backend.
+
+
+            Text Tasks
+            On return from the Text Holder, adds a record to the taskList in the store with details of the currentTask
+            and completed set to true. Retrieves the index of this new record from the store.
+
+            Sends a post request to the API, to add a new record for the task. The unique id returned from the API
+            is then added to the related taskList item, so the store list remains in sync with the backend.
+
+
+            All tasks
+            Updates the user and company xp values (including user level) held in the Vuex store. If the user has
+            levelled up, the action performed in the store sets a flag to true, enabling a message in the Congrats
+            component to congratulate the user.
+
+            Sends patch requests to the API to update the user xp/level and the company xp.
+
+            Changes the currentView to display the Congrats Splash component.
+
+
+        The Task Handler contains these components:
+
+            THE QUIZ HANDLER
+            Handles the display of quiz content and responds to user interaction. Receives the currentTask ID from
+            the Task Handler.
+
+            The Quiz Handler contains two views, one which displays the questions/answers and allows the user
+            to select their answers, and one which displays the correct/incorrect answers.
+
+            When the 'question answering' view is active:
+            Displays the quiz questions followed by a list of answers for the user to select their choice. Highlights
+            the chosen answer when clicked. The selection can be freely changed before the 'Submit' button is clicked.
+
+            When the 'answers' view is active:
+            Displays the quiz questions and their answers. Highlights the correct answers in green, and any wrong
+            answers in red. Gives a message at the top 'x out of y correct'.
+
+            On creation, the relevant company quizJSON is loaded, and the specific quiz task content is found and
+            placed into quizContent to be displayed. Checks to see if the task already exists in the Vuex store, and if
+            it does, if it is already complete. Creates arrays to hold 1) the index of the selected answer for each
+            question 2) y/n indication of correctly/incorrectly answered questions. If the task already exists in the
+            store and has been partially completed, overwrites this second array with the (split to array) contents of
+            the stored partial field.
+
+            When the user clicks to select an answer, the index of the answer in the list is entered into the corresponding
+            question's element in the activeInd array. This enables the 'active' style for the selected answer.
+
+            On clicking the Submit button (only shown if not complete):
+
+                First checks that all questions have been answered, otherwise has no effect. Examines the answer index
+                entered into each of the question elements in the activeInd array, and compares it to the quiz content
+                to see if that answer is flagged true or false in the imported json data. If the answer matches as
+                correct, sets the corresponding element in the 'partial' array to 'y' and adds 1 to the users score.
+
+                Activates the 'answers' view.
+
+            On clicking the Continue button from the answers view:
+
+                If the task is already in the store taskList (i.e. has been previously attempted), updates the 'partial'
+                field in the store with the (joined) content of the 'partial' array. Otherwise creates a new entry
+                with the task details.
+
+                Emits two events up to the Task Handler, first to update the Task Handler's taskScore with the quiz
+                score, then to signal that the quiz task has been completed, triggering the Task Handler's quiz processing
+                as described above.
+
+
+            TEXT HOLDER
+            This is a placeholder task type. Receives the currentTask ID from the Task Handler.
+
+            On creation, the relevant company textJSON is loaded, and the specific task content is found and
+            placed into taskContent to be displayed. Checks to see if the task already exists in the Vuex store, and if
+            it does, if it is already complete.
+
+            On clicking the Complete button (only shown if not complete), emits an event to the Task Handler to signal
+            that a 'text' task has been completed.
+
+
+            CONGRATS SPLASH
+            This view is presented by the Task Handler when a task has been completed. It receives 2 props from the
+            Task Handler - a boolean indicating if the task is a quiz that can be retaken (still having incorrectly
+            answered questions), and the XP earned by the user in completion of the task.
+
+            If the user has earned XP from the task, this is displayed along with a congratulatory message. If no XP
+            was earned (e.g. a quiz was completed with no correct answers), a message to this effect is displayed instead.
+
+            If the user levelled up by completing the task, a message is displayed along with the user's new level.
+
+            A 'check your profile' button is displayed. On clicking this button, an event is emitted via the Task
+            Holder up to the Main Wrapper, which changes the current view to the Profile view.
+
+            If the task was an 'incomplete' quiz, a 'Retake Quiz' button is displayed. When clicked this emits an event
+            to the Task Handler, which then resets the running taskScore to 0 and re-displays the quiz task for the user.
+
+            The 'Home' button emits an event via the Task Holder up to the Main Wrapper, which changes the
+            current view to the Front view.
+
+            When the CongratsSplash component is destroyed, it makes a commit to the Vuex store to toggle the 'level up'
+            flag back to false, as its job is done (for now).
+
+
+        THE PROFILE VIEW
+        This view displays the user's XP and Level as progress bars. Also the user's company information and the company's
+        overall XP progress. The course week the user is in is displayed at the top with their name.
+
+        The 'Home' button emits an event up to the Main Wrapper, which changes the current view to the Front view.
+
+        When clicked, the 'Log Out' button sends a commit to the Vuex store, which then clears out its userDetails,
+        companyDetails, and taskList arrays, and sets loggedIn to false, returning the user to the Login Page.
+
+
+
+
+

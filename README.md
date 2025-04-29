@@ -4,7 +4,7 @@ It is a demo of a potential wellbeing app, written in Vue.js on the front end, a
 
 I coded it all starting from scratch with no prior knowledge of Python and only a small understanding of JS, so it may well look a bit of a mess (there was no training). However, it was fun to do, and is here to show that I did it!
 
-Any design work was handled by my collegue, and things like features and structure agreed upon in conversation with my team, although the solution was often what I thought I could make work! The choice of a Django/Vue stack was down to me because I thought Vue looked cool (it is).
+Any design work was handled by my colleague, and things like features and structure agreed upon in conversation with my team, although the solution was often what I thought I could make work! The choice of a Django/Vue stack was down to me because I thought Vue looked cool (it is).
 
 None of the content is 'real', it's all placeholder stuff and stock images.
 
